@@ -1,9 +1,11 @@
 {
   "name": "exasim.v3",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.0",
+  "repository": "github:thrilliams/exasim",
+  "description": "A (feature-complete?) simulator for Zachtronic's game EXAPUNKS",
   "main": "src/index.ts",
   "dependencies": {
+    "@types/nanoid": "^2.1.0",
     "@types/node": "^13.1.6",
     "nanoid": "^2.1.9",
     "sval": "^0.4.6",
@@ -16,15 +18,14 @@
     "build": "npx rollup -c"
   },
   "keywords": [],
-  "author": "",
+  "author": "Soren Williams",
   "license": "ISC",
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^11.0.1",
-    "@rollup/plugin-node-resolve": "^7.0.0",
-    "@rollup/plugin-replace": "^2.3.0",
-    "@rollup/plugin-typescript": "^2.1.0",
     "rollup": "^1.29.0",
+    "@rollup/plugin-typescript": "^2.1.0",
+    "@rollup/plugin-node-resolve": "^7.0.0",
     "rollup-plugin-babel-minify": "^9.1.1",
-    "rollup-plugin-terser": "^5.2.0"
+    "@rollup/plugin-commonjs": "^11.0.1",
+    "@rollup/plugin-replace": "^2.3.0"
   }
 }
