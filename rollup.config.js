@@ -9,7 +9,8 @@ export default [
         input: 'src/index.ts',
         output: {
             file: 'dist/exasim.js',
-            format: 'esm'
+            format: 'esm',
+            sourcemap: true
         },
         plugins: [
             resolve({
@@ -24,12 +25,22 @@ export default [
         ]
     },
     {
-        input: 'dist/exasim.js',
+        input: 'src/index.ts',
         output: {
             file: 'dist/exasim.min.js',
-            format: 'esm'
+            format: 'esm',
+            sourcemap: true
         },
         plugins: [
+            resolve({
+                extensions: [ '.js', '.ts' ],
+                browser: true
+            }),
+            commonjs(),
+            typescript(),
+            replace({
+                'process.env.NODE_ENV': JSON.stringify( 'production' )
+            }),
             minify({
                 comments: false,
                 mangle: {

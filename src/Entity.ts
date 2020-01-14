@@ -20,20 +20,23 @@ export abstract class EntityContainer implements EntityContainer {
         return this.size.w * this.size.h;
     }
 
-    addChild(e: Entity): boolean {
-        this.children.push(e);
+    canFit(e: Entity): boolean {
         let sum = 0;
         for (let i = 0; i < this.children.length; i++) {
             sum += this.children[i].area;
         }
 
-        if (sum + e.area <= this.area) {
+        return sum + e.area <= this.area;
+        // TODO: Shapes?
+    }
+
+    addChild(e: Entity): boolean {
+        if (this.canFit(e)) {
             this.children.push(e);
             return true;
         } else {
             return false;
         }
-        // TODO: Shapes?
     }
 
     removeChild(e: Entity): Entity | boolean {
@@ -48,25 +51,31 @@ export abstract class EntityContainer implements EntityContainer {
 }
 
 export class Entity extends EntityContainer {
-    // By default, entities are entity containers, might change this if it causes difficulty
+    // By default, entities are entity containers, might change this if it causes unforseeable bad stuff
     signature: String;
     parent: EntityContainer;
 
     constructor(parent?: EntityContainer, size: { w: number, h: number } = { w: 1, h: 1 }) {
         super(size);
         this.signature = nanoid();
-        if (this.parent !== undefined) {
+        if (parent !== undefined) {
             this.parent = parent;
             this.parent.addChild(this);
         }
     }
 
-    move(target: EntityContainer): void {
+    // The move method removes the entity from its parent and returns a function to be executed later which places the entity in the target
+    move(target: EntityContainer): Function {
         if (this.parent !== undefined) {
             this.parent.removeChild(this);
+            this.parent = undefined;
         }
 
-        target.addChild(this);
-        // TODO: Space constraints
+        return (function () {
+            if (target.addChild(this))
+                this.parent = target;
+            else
+                console.log(new Error('Target EntityContainer has no more room'))
+        }).bind(this)
     }
 }
