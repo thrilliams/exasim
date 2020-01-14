@@ -1,4 +1,6 @@
-import { Room, Level } from './Level';
+import { Host, Level } from './Level';
+import { Register } from './Registers';
+import EXA from './EXA';
 
 export class CommunicationHandler {
     protected writeQueue: Communication[];
@@ -25,20 +27,22 @@ export class CommunicationHandler {
     }
 }
 
-export class Communication {
+export class Communication extends Register {
     value: String | number;
     blocking: boolean = false;
-    parent: CommunicationHandler;
+    comms: CommunicationHandler;
+    mode: 'GLOBAL' | 'LOCAL' = 'GLOBAL';
 
-    constructor(parent?: Room | Level) {
-        this.parent = parent.comms;
+    constructor(parent: EXA, c?: Host | Level) {
+        super(parent);
+        this.comms = c.comms;
     }
 
     block(b: boolean = true): void {
         this.blocking = b;
     }
 
-    get isBlocking(): boolean {
+    isBlocking(): boolean {
         return this.blocking;
     }
 
@@ -53,11 +57,11 @@ export class Communication {
     write(v: String | number): void {
         this.value = v;
         this.block();
-        this.parent.beginWrite(this);
+        this.comms.beginWrite(this);
     }
 
     read(): void {
         this.block();
-        this.parent.beginRead(this);
+        this.comms.beginRead(this);
     }
 }
