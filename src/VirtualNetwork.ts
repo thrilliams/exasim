@@ -15,7 +15,7 @@ class BuiltinGenerator {
             if (![x, y, width, height].map(e => Number.isInteger(e)).reduce((a, b) => a && b, true)) {
                 throw new Error('Invalid argument: x, y, width, and height must each be integers');
             }
-            // TODO: X and Y are discarded, we should use them
+            // TODO: X and Y are discarded, we should maybe use them
             return this.createHost({ w: width, h: height }, name);
         }
 
@@ -50,24 +50,24 @@ class BuiltinGenerator {
                 throw new Error('Invalid argument: id must be an integer');
             }
 
-            throw new Error('I, the developer, am a lazy piece of rope and haven\'t written this yet.'); // TODO: Implement this yet
+            throw new Error('I, the developer, am a lazy piece of rope and haven\'t implemented this yet.'); // TODO: Implement this yet
         }
         this.builtins['createLockedFile'] = function (hostHandle: string, id: number, icon: string, contents: Array<string | number>) {
             if (!Number.isInteger(id)) {
                 throw new Error('Invalid argument: id must be an integer');
             }
-            
-            throw new Error('I, the developer, am a lazy piece of rope and haven\'t written this yet.'); // TODO: Implement this yet
+
+            throw new Error('I, the developer, am a lazy piece of rope and haven\'t implemented this yet.'); // TODO: Implement this yet
         }
         this.builtins['setFileColumnCount'] = function (fileHandle: string, columnCount: number) {
             if (!Number.isInteger(columnCount)) {
                 throw new Error('Invalid argument: columnCount must be an integer');
             }
 
-            throw new Error('I, the developer, am a lazy piece of rope and haven\'t written this yet.'); // TODO: Implement this yet
+            throw new Error('I, the developer, am a lazy piece of rope and haven\'t implemented this yet.'); // TODO: Implement this yet
         }
         this.builtins['setFileInitiallyCollapsed'] = function (fileHandle: string) {
-            throw new Error('I, the developer, am a lazy piece of rope and haven\'t written this yet.'); // TODO: Implement this yet
+            throw new Error('I, the developer, am a lazy piece of rope and haven\'t implemented this yet.'); // TODO: Implement this yet
         }
 
         // TODO: Hardware Registers
@@ -76,47 +76,47 @@ class BuiltinGenerator {
                 throw new Error('Invalid argument: x and y must each be integers');
             }
 
-            throw new Error('I, the developer, am a lazy piece of rope and haven\'t written this yet.'); // TODO: Implement this yet
+            throw new Error('I, the developer, am a lazy piece of rope and haven\'t implemented this yet.'); // TODO: Implement this yet
         }
         this.builtins['setRegisterReadCallback'] = function (registerHandle: string, readCallback: () => string | number) {
-            throw new Error('I, the developer, am a lazy piece of rope and haven\'t written this yet.'); // TODO: Implement this yet
+            throw new Error('I, the developer, am a lazy piece of rope and haven\'t implemented this yet.'); // TODO: Implement this yet
         }
         this.builtins['setRegisterWriteCallback'] = function (registerHandle: string, writeCallback: () => string | number) {
-            throw new Error('I, the developer, am a lazy piece of rope and haven\'t written this yet.'); // TODO: Implement this yet
+            throw new Error('I, the developer, am a lazy piece of rope and haven\'t implemented this yet.'); // TODO: Implement this yet
         }
 
         // TODO: Requirements
         // Or, EXISTENCE IS A CURSE SEND HELP I HAVE TO WRITE ALL OF THESE
         this.builtins['requireCreateFile'] = function (hostHandle: string, contents: Array<string | number>, description: string) {
-            throw new Error('I, the developer, am a lazy piece of rope and haven\'t written this yet.'); // TODO: Implement this yet
+            throw new Error('I, the developer, am a lazy piece of rope and haven\'t implemented this yet.'); // TODO: Implement this yet
         }
         this.builtins['requireMoveFile'] = function (fileHandle: string, hostHandle: string, description: string) {
-            throw new Error('I, the developer, am a lazy piece of rope and haven\'t written this yet.'); // TODO: Implement this yet
+            throw new Error('I, the developer, am a lazy piece of rope and haven\'t implemented this yet.'); // TODO: Implement this yet
         }
         this.builtins['requireChangeFile'] = function (fileHandle: string, contents: Array<string | number>, description: string) {
-            throw new Error('I, the developer, am a lazy piece of rope and haven\'t written this yet.'); // TODO: Implement this yet
+            throw new Error('I, the developer, am a lazy piece of rope and haven\'t implemented this yet.'); // TODO: Implement this yet
         }
         this.builtins['requireMoveAndChangeFile'] = function (fileHandle: string, hostHandle: string, contents: Array<string | number>, description: string) {
-            throw new Error('I, the developer, am a lazy piece of rope and haven\'t written this yet.'); // TODO: Implement this yet
+            throw new Error('I, the developer, am a lazy piece of rope and haven\'t implemented this yet.'); // TODO: Implement this yet
         }
         this.builtins['requireDeleteFile'] = function (fileHandle: string, description: string) {
-            throw new Error('I, the developer, am a lazy piece of rope and haven\'t written this yet.'); // TODO: Implement this yet
+            throw new Error('I, the developer, am a lazy piece of rope and haven\'t implemented this yet.'); // TODO: Implement this yet
         }
         this.builtins['requireCustomGoal'] = function (description: string) {
-            throw new Error('I, the developer, am a lazy piece of rope and haven\'t written this yet.'); // TODO: Implement this yet
+            throw new Error('I, the developer, am a lazy piece of rope and haven\'t implemented this yet.'); // TODO: Implement this yet
         }
         this.builtins['setCustomGoalCompleted'] = function (goalHandle: string) {
-            throw new Error('I, the developer, am a lazy piece of rope and haven\'t written this yet.'); // TODO: Implement this yet
+            throw new Error('I, the developer, am a lazy piece of rope and haven\'t implemented this yet.'); // TODO: Implement this yet
         }
         this.builtins['setCustomGoalFailed'] = function (goalHandle: string) {
-            throw new Error('I, the developer, am a lazy piece of rope and haven\'t written this yet.'); // TODO: Implement this yet
+            throw new Error('I, the developer, am a lazy piece of rope and haven\'t implemented this yet.'); // TODO: Implement this yet
         }
         this.builtins['mergeRequirements'] = function (requirementCount: number, description: string) {
             if (!Number.isInteger(requirementCount)) {
                 throw new Error('Invalid argument: requirementCount must be an integer');
             }
 
-            throw new Error('I, the developer, am a lazy piece of rope and haven\'t written this yet.'); // TODO: Implement this yet
+            throw new Error('I, the developer, am a lazy piece of rope and haven\'t implemented this yet.'); // TODO: Implement this yet
         }
 
         // TODO: Input / Output Tables
@@ -125,13 +125,13 @@ class BuiltinGenerator {
                 throw new Error('Invalid argument: x and y must each be integers');
             }
 
-            throw new Error('I, the developer, am a lazy piece of rope and haven\'t written this yet.'); // TODO: Implement this yet
+            throw new Error('I, the developer, am a lazy piece of rope and haven\'t implemented this yet.'); // TODO: Implement this yet
         }
         this.builtins['addTableInput'] = function (label: string, values: Array<string | number>, registerHandle: string) {
-            throw new Error('I, the developer, am a lazy piece of rope and haven\'t written this yet.'); // TODO: Implement this yet
+            throw new Error('I, the developer, am a lazy piece of rope and haven\'t implemented this yet.'); // TODO: Implement this yet
         }
         this.builtins['addTableOutput'] = function (label: string, values: Array<string | number>, registerHandle: string) {
-            throw new Error('I, the developer, am a lazy piece of rope and haven\'t written this yet.'); // TODO: Implement this yet
+            throw new Error('I, the developer, am a lazy piece of rope and haven\'t implemented this yet.'); // TODO: Implement this yet
         }
 
         // TODO: Output Windows
@@ -140,13 +140,13 @@ class BuiltinGenerator {
                 throw new Error('Invalid argument: x, y, width, and height must each be integers');
             }
 
-            throw new Error('I, the developer, am a lazy piece of rope and haven\'t written this yet.'); // TODO: Implement this yet
+            throw new Error('I, the developer, am a lazy piece of rope and haven\'t implemented this yet.'); // TODO: Implement this yet
         }
         this.builtins['printWindow'] = function (windowHandle: string, text: string) {
-            throw new Error('I, the developer, am a lazy piece of rope and haven\'t written this yet.'); // TODO: Implement this yet
+            throw new Error('I, the developer, am a lazy piece of rope and haven\'t implemented this yet.'); // TODO: Implement this yet
         }
         this.builtins['clearWindow'] = function (windowHandle: string) {
-            throw new Error('I, the developer, am a lazy piece of rope and haven\'t written this yet.'); // TODO: Implement this yet
+            throw new Error('I, the developer, am a lazy piece of rope and haven\'t implemented this yet.'); // TODO: Implement this yet
         }
 
         // Random Generation
@@ -169,11 +169,11 @@ class BuiltinGenerator {
 
         // TODO: Find an alternative for faker
         this.builtins['randomName'] = function () {
-            throw new Error('I, the developer, am a lazy piece of rope and haven\'t written this yet.');
+            throw new Error('I, the developer, am a lazy piece of rope and haven\'t implemented this yet.');
             // return faker.name.findName();
         }
         this.builtins['randomAddress'] = function () {
-            throw new Error('I, the developer, am a lazy piece of rope and haven\'t written this yet.');
+            throw new Error('I, the developer, am a lazy piece of rope and haven\'t implemented this yet.');
             // return faker.address.streetAddress();
         }
 
@@ -239,7 +239,7 @@ export class VirtualNetwork extends BuiltinGenerator {
                 description: this.scope.getDescription()
             }
         } else {
-            console.warn('Config must be imported before meta info can be queried')
+            console.warn('Config must be imported before meta info can be queried');
         }
     }
 }

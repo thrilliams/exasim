@@ -1,5 +1,4 @@
-import { Entity } from './Entity';
 import { Level } from './Level';
 
-console.log(Entity);
+// let level = new Level();
 console.log(Level);

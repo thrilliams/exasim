@@ -55,27 +55,39 @@ export class Entity extends EntityContainer {
     signature: String;
     parent: EntityContainer;
 
-    constructor(parent?: EntityContainer, size: { w: number, h: number } = { w: 1, h: 1 }) {
+    constructor(parent: EntityContainer, size: { w: number, h: number } = { w: 1, h: 1 }) {
         super(size);
         this.signature = nanoid();
-        if (parent !== undefined) {
-            this.parent = parent;
-            this.parent.addChild(this);
-        }
+        this.parent = parent;
+        this.parent.addChild(this);
     }
 
     // The move method removes the entity from its parent and returns a function to be executed later which places the entity in the target
-    move(target: EntityContainer): Function {
+    move(target: EntityContainer, forceful = false): Function {
         if (this.parent !== undefined) {
             this.parent.removeChild(this);
             this.parent = undefined;
         }
 
-        return (function () {
+        if (forceful) {
             if (target.addChild(this))
                 this.parent = target;
             else
                 console.log(new Error('Target EntityContainer has no more room'))
-        }).bind(this)
+        } else {
+            return (function () {
+                if (target.addChild(this))
+                    this.parent = target;
+                else
+                    console.log(new Error('Target EntityContainer has no more room'))
+            }).bind(this)
+        }
+    }
+
+    kill() {
+        this.parent.removeChild(this);
+        for (let i = 0; i < this.children.length; i++) {
+            this.children[i].move(this.parent, true);
+        }
     }
 }
