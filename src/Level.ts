@@ -1,8 +1,10 @@
 import nanoid from 'nanoid';
 
-import { EntityContainer } from './Entity';
+import { EntityContainer, Entity } from './Entity';
 import { CommunicationHandler } from './Communication';
 import { VirtualNetwork } from './VirtualNetwork';
+import loadFile from './FileSystem';
+import EXA from './EXA';
 
 export class Host extends EntityContainer {
     name: String;
@@ -45,8 +47,9 @@ export class Level {
     comms = new CommunicationHandler();
     vn: VirtualNetwork;
 
-    public readonly playerHostHandle = nanoid();
-    hosts: { [key: string]: Host } = {};
+    public playerHostHandle: string;
+    hosts: { [key: string]: Host };
+
     links: {
         [key: string]: {
             firstHostHandle: string,
@@ -54,7 +57,7 @@ export class Level {
             secondHostHandle: string,
             secondID: number
         }
-    } = {}
+    }
 
     meta: {
         title: String,
@@ -62,24 +65,32 @@ export class Level {
         description: String
     }
 
-    constructor() {
-        this.hosts[this.playerHostHandle] = new Host({ w: 3, h: 3 }, 'Rhizome'); // TODO: Allow for altering the name of the player host?
+    constructor(config?: string, loadAsPath = false) {
+        if (config !== undefined) {
+            this.loadConfig(config, loadAsPath);
+        } else {
+            console.warn('No config was given, proceed with caution.');
+        }
+    }
+
+    initialize(i?: number) {
+        this.hosts = {};
+        this.links = {};
+        this.playerHostHandle = nanoid();
+        this.hosts[this.playerHostHandle] = new Host({ w: 3, h: 3 }, 'Rhizome'); // TODO: Allow for altering the name of the player host
+        if (this.vn !== undefined && i !== undefined) {
+            this.meta = this.vn.getMeta();
+            this.vn.scope.initializeTestRun(i);
+        }
     }
 
     loadConfig(config: string, loadAsPath = false) {
+        if (this.vn && this.vn.imported)
+            throw new Error('Config has already been loaded');
+
         this.vn = new VirtualNetwork(this);
 
-        if (loadAsPath) {
-            if (globalThis.require) {
-                this.vn.import(require('fs').readFileSync(config));
-            } else {
-                throw new Error('Paths are not yet supported in browser'); // TODO: Support paths in browser
-            }
-        } else {
-            this.vn.import(config);
-        }
-
-        this.meta = this.vn.getMeta();
+        this.vn.import(loadFile(config, loadAsPath));
     }
 
     createHost(size: { w: number, h: number }, name: String) {
@@ -117,5 +128,21 @@ export class Level {
 
     getLink(handle: string): { firstHostHandle: string, firstID: number, secondHostHandle: string, secondID: number } {
         return this.links[handle];
+    }
+
+    getEntities(type = Entity): Entity[] {
+        let entities: Entity[] = [];
+        Object.keys(this.hosts).forEach(e => {
+            for (let i = 0; i < this.hosts[e].children.length; i++) {
+                if (this.hosts[e].children[i] instanceof type) {
+                    entities.push(this.hosts[e].children[i]);
+                }
+            }
+        })
+        return entities;
+    }
+
+    createExa(name = 'XA') {
+        new EXA(this.getHost(this.playerHostHandle), name)
     }
 }

@@ -20,3 +20,23 @@ export class Register {
         return false;
     }
 }
+
+export class RegisterManager {
+    static getRegisterPattern(): { [key: string]: typeof Register } {
+        return {
+            'X': Register,
+            'T': Register,
+            'M': Register,
+            'F': Register
+        }
+    }
+
+    registers: { [key: string]: Register } = {};
+
+    constructor(parent: EXA) {
+        let registers = RegisterManager.getRegisterPattern();
+        Object.keys(registers).forEach(e => {
+            this.registers[e] = new registers[e](parent);
+        })
+    }
+}
