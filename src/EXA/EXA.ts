@@ -1,5 +1,5 @@
-import { Entity } from '../base/Entity';
-import { EntityHolder } from '../base/EntityHolder';
+import { Entity } from '../Entity/Entity';
+import { EntityHolder } from '../Entity/EntityHolder';
 
 class EXAContents extends EntityHolder {
     constructor() {

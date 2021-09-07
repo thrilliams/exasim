@@ -1,5 +1,5 @@
-import { Integer } from '../base/Types';
-import { Thing } from '../base/Thing';
+import { Integer } from '../Types';
+import { Thing } from '../Thing';
 import { Host } from './Host';
 
 export type LinkID = Integer | 'LINK_ID_NONE';

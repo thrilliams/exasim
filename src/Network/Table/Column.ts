@@ -1,5 +1,5 @@
-import { Thing } from '../../base/Thing';
-import { Integer } from '../../base/Types';
+import { Thing } from '../../Thing';
+import { Integer } from '../../Types';
 import { RegisterValue } from '../../EXA/Register';
 import { HardwareRegister } from '../HardwareRegister';
 

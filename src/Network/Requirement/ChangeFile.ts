@@ -1,6 +1,6 @@
 import { File, FileContents } from '../File';
 import { Network } from '../Network';
-import { Requirement } from '../Requirement';
+import { Requirement } from './Requirement';
 
 export class ChangeFile extends Requirement {
     file: File;

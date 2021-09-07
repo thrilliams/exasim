@@ -1,5 +1,5 @@
-import { EntityHolder } from '../base/EntityHolder';
-import { Integer } from '../base/Types';
+import { EntityHolder } from '../Entity/EntityHolder';
+import { Integer } from '../Types';
 import { Link } from './Link';
 
 export class Host extends EntityHolder {

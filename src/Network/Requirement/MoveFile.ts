@@ -1,7 +1,7 @@
 import { File } from '../File';
 import { Host } from '../Host';
 import { Network } from '../Network';
-import { Requirement } from '../Requirement';
+import { Requirement } from './Requirement';
 
 export class MoveFile extends Requirement {
     file: File;

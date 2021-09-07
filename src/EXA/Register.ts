@@ -1,3 +1,3 @@
-import { Integer, Keyword } from '../base/Types';
+import { Integer, Keyword } from '../Types';
 
 export type RegisterValue = Integer | Keyword;

@@ -1,5 +1,5 @@
-import { Thing } from '../base/Thing';
-import { Column } from './Table/Column';
+import { Thing } from '../../Thing';
+import { Column } from './Column';
 
 export class Table extends Thing {
     title: string;

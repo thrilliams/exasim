@@ -1,5 +1,5 @@
 import { EntityHolder } from './EntityHolder';
-import { Thing } from './Thing';
+import { Thing } from '../Thing';
 
 export abstract class Entity extends Thing {
     parent: EntityHolder;

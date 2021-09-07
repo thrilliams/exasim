@@ -1,5 +1,5 @@
-import { Entity } from '../base/Entity';
-import { Integer } from '../base/Types';
+import { Entity } from '../Entity/Entity';
+import { Integer } from '../Types';
 import { RegisterValue } from '../EXA/Register';
 import { Host } from './Host';
 
