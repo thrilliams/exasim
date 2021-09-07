@@ -1,4 +1,9 @@
-import { Level } from './Level';
+import { VirtualNetwork } from './Network/VirtualNetwork'
 
-// let level = new Level();
-console.log(Level);
+(async () => {
+    let vn = new VirtualNetwork();
+    await vn.initQuickJS();
+    vn.preRun();
+    vn.runCycle();
+    vn.postRun();
+})()
