@@ -1,5 +1,5 @@
-import { Thing } from '../base/Thing';
-import { Network } from './Network';
+import { Thing } from '../../Thing';
+import { Network } from '../Network';
 
 export type RequirementState = 'INCOMPLETE' | 'COMPLETE' | 'FAILED';
 export type RequirementGroup = {

@@ -1,6 +1,6 @@
 import { File } from '../File';
 import { Network } from '../Network';
-import { Requirement } from '../Requirement';
+import { Requirement } from './Requirement';
 
 export class DeleteFile extends Requirement {
     file: File;

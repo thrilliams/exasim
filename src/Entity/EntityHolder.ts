@@ -1,4 +1,4 @@
-import { Thing } from './Thing';
+import { Thing } from '../Thing';
 import { Entity } from './Entity';
 
 export abstract class EntityHolder extends Thing {

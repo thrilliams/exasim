@@ -1,5 +1,5 @@
-import { Thing } from '../base/Thing';
-import { Integer, Keyword } from '../base/Types';
+import { Thing } from '../Thing';
+import { Integer, Keyword } from '../Types';
 import { RegisterValue } from '../EXA/Register';
 import { File, FileContents, FileIcon } from './File';
 import { HardwareRegister, RegisterReadCallback, RegisterWriteCallback } from './HardwareRegister';
@@ -11,10 +11,10 @@ import { CustomGoal } from './Requirement/CustomGoal';
 import { DeleteFile } from './Requirement/DeleteFile';
 import { MoveAndChangeFile } from './Requirement/MoveAndChangeFile';
 import { MoveFile } from './Requirement/MoveFile';
-import { Requirement, RequirementGroup } from './Requirement';
+import { Requirement, RequirementGroup } from './Requirement/Requirement';
 import { Input } from './Table/Input';
 import { Output } from './Table/Output';
-import { Table } from './Table';
+import { Table } from './Table/Table';
 import { Window } from './Window';
 
 
